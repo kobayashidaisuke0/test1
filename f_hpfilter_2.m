@@ -4,8 +4,8 @@ clear all
 close all
 
 % load the data
-startdate = '01/01/1954';
-enddate = '01/01/2019';
+startdate = '01/01/1994';
+enddate = '01/01/2023';
 f = fred
 Y_jp = fetch(f,'JPNRGDPEXP',startdate,enddate)
 y_jp = log(Y_jp.Data(:,2));
@@ -41,13 +41,13 @@ cycle_jp = y_jp-trend_jp;
 cycle_kr = y_kr-trend_kr;
 
 % plot detrended GDP
-dates = 1954:1/4:2022.1/4; zerovec = zeros(size(y_jp));
+dates = 1994:1/4:2023.1/4; zerovec = zeros(size(y_jp));
 figure
-title('Detrended log(real GDP) 1954Q1-2022Q1'); hold on
+title('Detrended log(real GDP) 1994Q1-2023Q1'); hold on
 plot(q, cycle_jp,'r')
 plot(q, cycle_kr,'b')
 datetick('x', 'yyyy-qq')
-legend({'JP','UK'}, 'Location', 'southwest') 
+legend({'JP','KR'}, 'Location', 'southwest') 
 
 % compute sd(y), sd(c), rho(y), rho(c), corr(y,c) (from detrended series)
 ysd_jp = std(cycle_jp)*100;
